@@ -1,3 +1,4 @@
+/* RESET */
 * {
     box-sizing: border-box;
     margin: 0;
@@ -5,6 +6,7 @@
     font-family: 'Poppins', sans-serif;
 }
 
+/* BODY */
 body {
     background: linear-gradient(135deg, #e3f2fd, #fce4ec);
     color: #333;
@@ -14,11 +16,42 @@ body {
     padding: 30px;
 }
 
-h1 {
-    margin-bottom: 20px;
-    font-size: 2rem;
+/* NAVBAR */
+.navbar {
+    width: 100%;
+    max-width: 800px;
+    background: white;
+    padding: 15px 20px;
+    border-radius: 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+    margin-bottom: 25px;
 }
 
+.navbar h1 {
+    font-size: 1.5rem;
+}
+
+/* BUTTONS */
+button {
+    background: linear-gradient(45deg, #4a90e2, #6ec6ff);
+    color: white;
+    font-weight: 600;
+    border: none;
+    padding: 10px 14px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.25s ease;
+}
+
+button:hover {
+    transform: translateY(-2px) scale(1.03);
+    opacity: 0.9;
+}
+
+/* SECTIONS (CARDS) */
 section {
     background-color: #ffffff;
     border-radius: 15px;
@@ -27,19 +60,22 @@ section {
     padding: 25px;
     width: 90%;
     max-width: 550px;
-    transition: transform 0.2s ease;
+    transition: all 0.25s ease;
 }
 
 section:hover {
     transform: translateY(-3px);
+    box-shadow: 0 15px 35px rgba(0,0,0,0.15);
 }
 
+/* HEADINGS */
 h2 {
     color: #4a90e2;
-    font-size: 1.6em;
+    font-size: 1.5em;
     margin-bottom: 15px;
 }
 
+/* FORM */
 form label {
     display: block;
     margin-bottom: 5px;
@@ -54,24 +90,14 @@ input, select {
     border: 1px solid #ddd;
 }
 
-select[multiple] {
-    height: 110px;
+/* CHECKBOX GROUP */
+#animal-characteristics label {
+    display: block;
+    margin-bottom: 6px;
+    font-size: 0.95em;
 }
 
-button {
-    background: linear-gradient(45deg, #4a90e2, #6ec6ff);
-    color: white;
-    font-weight: 600;
-    border: none;
-    padding: 12px;
-    border-radius: 8px;
-    cursor: pointer;
-}
-
-button:hover {
-    transform: scale(1.03);
-}
-
+/* MATCH RESULTS LAYOUT */
 .flow-chart {
     display: flex;
     flex-direction: column;
@@ -79,6 +105,7 @@ button:hover {
     gap: 15px;
 }
 
+/* MATCH CARDS */
 .match-profile {
     background: white;
     border-left: 6px solid #4a90e2;
@@ -86,18 +113,25 @@ button:hover {
     padding: 15px;
     max-width: 300px;
     width: 100%;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.08);
 }
 
+/* CONNECTOR LINE */
 .flow-connector {
     width: 4px;
     height: 40px;
-    background: #4a90e2;
+    background: linear-gradient(#4a90e2, #6ec6ff);
+    border-radius: 2px;
 }
 
-#match-results-page {
+/* RESULTS CONTAINERS */
+#adoption-results,
+#lost-results {
+    margin-top: 15px;
+    width: 100%;
+}
+
+/* HIDDEN SECTIONS */
+.hidden {
     display: none;
-}
-
-#match-results-page.active {
-    display: block;
 }
