@@ -11,114 +11,112 @@
 
 <body>
 
-<!-- NAVBAR -->
-<nav class="navbar">
+<!-- HOME PAGE -->
+<div id="home-page" class="center-screen">
     <h1>🐾 PetConnect</h1>
-    <div>
-        <button onclick="showSection('adoption')">Adoption</button>
-        <button onclick="showSection('lost')">Lost & Found</button>
+    <p class="subtitle">Find pets. Find homes. Reunite families.</p>
+
+    <div class="home-options">
+        <div class="card-option" onclick="showMain('adoption')">
+            🐾 Adoption
+        </div>
+
+        <div class="card-option" onclick="showMain('lost')">
+            🔍 Lost & Found
+        </div>
     </div>
-</nav>
-
-<!-- ADOPTION SECTION -->
-<div id="adoption-section">
-
-<section>
-<h2>Create Adoption Animal Profile</h2>
-<form onsubmit="submitAdoptionAnimalProfile(event)">
-<input type="text" id="animal-name" placeholder="Name" required>
-
-<select id="animal-type">
-<option>Dog</option>
-<option>Cat</option>
-<option>Other</option>
-</select>
-
-<div id="animal-characteristics">
-<label><input type="checkbox" value="Friendly"> Friendly</label>
-<label><input type="checkbox" value="Energetic"> Energetic</label>
-<label><input type="checkbox" value="Calm"> Calm</label>
-<label><input type="checkbox" value="Playful"> Playful</label>
-<label><input type="checkbox" value="Trained"> Trained</label>
 </div>
 
-<button>Create Profile</button>
-</form>
-</section>
+<!-- ADOPTION PAGE -->
+<div id="adoption-page" class="hidden">
 
-<section>
-<h2>Create Owner Profile</h2>
-<form onsubmit="submitOwnerProfile(event)">
-<input type="text" id="owner-name" placeholder="Owner Name" required>
+    <button class="back-btn" onclick="goHome()">← Back</button>
 
-<select id="dream-characteristics" multiple>
-<option>Friendly</option>
-<option>Energetic</option>
-<option>Calm</option>
-<option>Playful</option>
-<option>Trained</option>
-</select>
+    <h2>Adoption</h2>
 
-<button>Create Owner</button>
-</form>
-</section>
+    <div class="home-options">
+        <div class="card-option" onclick="showAdoption('animal')">Add Animal</div>
+        <div class="card-option" onclick="showAdoption('owner')">Add Owner</div>
+    </div>
 
-<section>
-<button onclick="matchProfiles()">Match Pets</button>
-<div id="adoption-results" class="flow-chart"></div>
-</section>
+    <section id="animal-form" class="hidden">
+        <form onsubmit="submitAdoptionAnimalProfile(event)">
+            <input type="text" id="animal-name" placeholder="Name" required>
+
+            <select id="animal-type">
+                <option>Dog</option>
+                <option>Cat</option>
+            </select>
+
+            <div id="animal-characteristics">
+                <label><input type="checkbox" value="Friendly"> Friendly</label>
+                <label><input type="checkbox" value="Energetic"> Energetic</label>
+                <label><input type="checkbox" value="Calm"> Calm</label>
+                <label><input type="checkbox" value="Playful"> Playful</label>
+            </div>
+
+            <button>Create Animal</button>
+        </form>
+    </section>
+
+    <section id="owner-form" class="hidden">
+        <form onsubmit="submitOwnerProfile(event)">
+            <input type="text" id="owner-name" placeholder="Owner Name" required>
+
+            <select id="dream-characteristics" multiple>
+                <option>Friendly</option>
+                <option>Energetic</option>
+                <option>Calm</option>
+                <option>Playful</option>
+            </select>
+
+            <button>Create Owner</button>
+        </form>
+    </section>
+
+    <button onclick="matchProfiles()">Find Matches</button>
+    <div id="adoption-results"></div>
 
 </div>
 
-<!-- LOST DOG SECTION -->
-<div id="lost-section" class="hidden">
+<!-- LOST PAGE -->
+<div id="lost-page" class="hidden">
 
-<section>
-<h2>Missing Dog</h2>
-<form onsubmit="submitMissingDogProfile(event)">
-<input type="text" id="missing-dog-name" placeholder="Dog Name" required>
+    <button class="back-btn" onclick="goHome()">← Back</button>
 
-<select id="missing-dog-color">
-<option>Black</option>
-<option>Brown</option>
-<option>White</option>
-</select>
+    <h2>Lost & Found</h2>
 
-<select id="missing-dog-size">
-<option>Small</option>
-<option>Medium</option>
-<option>Large</option>
-</select>
+    <div class="home-options">
+        <div class="card-option" onclick="showLost('missing')">Missing Dog</div>
+        <div class="card-option" onclick="showLost('found')">Found Dog</div>
+    </div>
 
-<input type="text" id="missing-dog-breed" placeholder="Breed">
-<button>Create Missing Profile</button>
-</form>
-</section>
+    <section id="missing-form" class="hidden">
+        <form onsubmit="submitMissingDogProfile(event)">
+            <input type="text" id="missing-dog-name" placeholder="Dog Name" required>
 
-<section>
-<h2>Found Dog</h2>
-<form onsubmit="submitFoundDogProfile(event)">
-<select id="found-dog-color">
-<option>Black</option>
-<option>Brown</option>
-<option>White</option>
-</select>
+            <select id="missing-dog-color">
+                <option>Black</option>
+                <option>Brown</option>
+            </select>
 
-<select id="found-dog-size">
-<option>Small</option>
-<option>Medium</option>
-<option>Large</option>
-</select>
+            <button>Create Missing</button>
+        </form>
+    </section>
 
-<input type="text" id="found-dog-breed" placeholder="Breed">
-<button>Create Found Profile</button>
-</form>
-</section>
+    <section id="found-form" class="hidden">
+        <form onsubmit="submitFoundDogProfile(event)">
+            <select id="found-dog-color">
+                <option>Black</option>
+                <option>Brown</option>
+            </select>
 
-<section>
-<button onclick="matchDogProfiles()">Find Matches</button>
-<div id="lost-results"></div>
-</section>
+            <button>Create Found</button>
+        </form>
+    </section>
+
+    <button onclick="matchDogProfiles()">Find Matches</button>
+    <div id="lost-results"></div>
 
 </div>
 
