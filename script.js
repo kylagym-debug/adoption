@@ -24,8 +24,16 @@ function showMain(page) {
 
 // BACK → HOME
 function goHome() {
-    hideAllPages();
-    hideAllForms();
+    // hide EVERYTHING first
+    document.getElementById("home-page").style.display = "none";
+    document.getElementById("adoption-page").style.display = "none";
+    document.getElementById("lost-page").style.display = "none";
+    document.getElementById("animal-form").style.display = "none";
+    document.getElementById("owner-form").style.display = "none";
+    document.getElementById("missing-form").style.display = "none";
+    document.getElementById("found-form").style.display = "none";
+
+    // then show ONLY home
     document.getElementById("home-page").style.display = "block";
 }
 
