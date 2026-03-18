@@ -1,0 +1,129 @@
+/* Reset some default styling */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+}
+
+/* General body styling */
+body {
+    background-color: #f9f9f9;
+    color: #333;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+}
+
+/* Section styling */
+section {
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin: 20px 0;
+    padding: 20px;
+    width: 90%;
+    max-width: 500px;
+}
+
+/* Headings */
+h2 {
+    color: #4a90e2;
+    font-size: 1.5em;
+    margin-bottom: 15px;
+}
+
+h3 {
+    color: #333;
+    font-size: 1.2em;
+    margin-bottom: 10px;
+}
+
+/* Form styling */
+form label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 5px;
+    color: #555;
+}
+
+form input[type="text"],
+form select,
+form button {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+form select {
+    height: auto;
+}
+
+form select[multiple] {
+    height: 100px;
+}
+
+/* Button styling */
+button {
+    background-color: #4a90e2;
+    color: #fff;
+    font-weight: bold;
+    border: none;
+    padding: 12px;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
+
+button:hover {
+    background-color: #357abd;
+}
+
+/* Flow chart styling for match results */
+.flow-chart {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+}
+
+.match-profile {
+    background-color: #e0f7fa;
+    border: 2px solid #4a90e2;
+    border-radius: 8px;
+    padding: 15px;
+    text-align: center;
+    max-width: 250px;
+}
+
+.match-profile h3 {
+    font-size: 1.2em;
+    color: #00796b;
+    margin-bottom: 8px;
+}
+
+.match-profile p {
+    font-size: 0.9em;
+    color: #333;
+}
+
+/* Connector line between profiles */
+.flow-connector {
+    width: 4px;
+    height: 50px;
+    background-color: #4a90e2;
+}
+
+/* Display match results page only when active */
+#match-results-page {
+    display: none;
+    flex-direction: column;
+    align-items: center;
+}
+
+#match-results-page.active {
+    display: flex;
+}
