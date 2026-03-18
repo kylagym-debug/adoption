@@ -1,103 +1,104 @@
+// NAV SWITCH
+function showSection(section) {
+    document.getElementById("adoption-section").classList.add("hidden");
+    document.getElementById("lost-section").classList.add("hidden");
+    document.getElementById(section + "-section").classList.remove("hidden");
+}
+
+/* ---------------- ADOPTION ---------------- */
 let adoptionAnimalProfiles = [];
 let ownerProfiles = [];
 
-// Animal profile
-function submitAdoptionAnimalProfile(event) {
-    event.preventDefault();
+function submitAdoptionAnimalProfile(e){
+e.preventDefault();
 
-    const name = document.getElementById("animal-name").value;
-    const type = document.getElementById("animal-type").value;
-    const characteristics = Array.from(
-  document.querySelectorAll('#animal-characteristics input:checked')
+const name = document.getElementById("animal-name").value;
+const type = document.getElementById("animal-type").value;
+
+const characteristics = Array.from(
+document.querySelectorAll('#animal-characteristics input:checked')
 ).map(cb => cb.value);
 
-    if (characteristics.length > 5) {
-        alert("Please select up to 5 characteristics.");
-        return;
-    }
-
-    adoptionAnimalProfiles.push({ name, type, characteristics });
-
-    alert(`Adoption profile for ${name} created!`);
-    document.getElementById("adoption-animal-form").reset();
+adoptionAnimalProfiles.push({name,type,characteristics});
+alert("Animal added!");
 }
 
-// Owner profile
-function submitOwnerProfile(event) {
-    event.preventDefault();
+function submitOwnerProfile(e){
+e.preventDefault();
 
-    const ownerName = document.getElementById("owner-name").value;
-    const dreamCharacteristics = Array.from(
-        document.getElementById("dream-characteristics").selectedOptions
-    ).map(option => option.value);
+const name = document.getElementById("owner-name").value;
+const dream = Array.from(
+document.getElementById("dream-characteristics").selectedOptions
+).map(o=>o.value);
 
-    if (dreamCharacteristics.length > 5) {
-        alert("Select up to 5 desired characteristics.");
-        return;
-    }
-
-    ownerProfiles.push({
-        name: ownerName,
-        dreamCharacteristics
-    });
-
-    alert(`Owner profile for ${ownerName} created!`);
-    document.getElementById("owner-profile-form").reset();
+ownerProfiles.push({name,dreamCharacteristics:dream});
+alert("Owner added!");
 }
 
-// Matching
-function matchProfiles() {
+function matchProfiles(){
+const results = document.getElementById("adoption-results");
+results.innerHTML="";
 
-    if (ownerProfiles.length === 0 || adoptionAnimalProfiles.length === 0) {
-        alert("Create both profiles first!");
-        return;
-    }
+ownerProfiles.forEach(owner=>{
+let div=document.createElement("div");
+div.className="match-profile";
+div.innerHTML=`👤 ${owner.name}`;
+results.appendChild(div);
 
-    const page = document.getElementById("match-results-page");
-    const results = document.getElementById("match-results");
+adoptionAnimalProfiles.forEach(animal=>{
+let score = animal.characteristics.filter(c=>owner.dreamCharacteristics.includes(c)).length;
+if(score>0){
+let a=document.createElement("div");
+a.className="match-profile";
+a.innerHTML=`🐾 ${animal.name} (${score}⭐)`;
+results.appendChild(a);
+}
+});
+});
+}
 
-    page.classList.add("active");
-    results.innerHTML = "";
+/* ---------------- LOST DOG ---------------- */
+let missingDogProfiles=[];
+let foundDogProfiles=[];
 
-    ownerProfiles.forEach(owner => {
+function submitMissingDogProfile(e){
+e.preventDefault();
+missingDogProfiles.push({
+name:document.getElementById("missing-dog-name").value,
+color:document.getElementById("missing-dog-color").value,
+size:document.getElementById("missing-dog-size").value,
+breed:document.getElementById("missing-dog-breed").value
+});
+alert("Missing dog added");
+}
 
-        const ownerDiv = document.createElement("div");
-        ownerDiv.classList.add("match-profile");
+function submitFoundDogProfile(e){
+e.preventDefault();
+foundDogProfiles.push({
+color:document.getElementById("found-dog-color").value,
+size:document.getElementById("found-dog-size").value,
+breed:document.getElementById("found-dog-breed").value
+});
+alert("Found dog added");
+}
 
-        ownerDiv.innerHTML = `
-            <h3>👤 ${owner.name}</h3>
-            <p><strong>Looking for:</strong> ${owner.dreamCharacteristics.join(", ")}</p>
-        `;
+function matchDogProfiles(){
+const results=document.getElementById("lost-results");
+results.innerHTML="";
 
-        results.appendChild(ownerDiv);
+missingDogProfiles.forEach(m=>{
+foundDogProfiles.forEach(f=>{
+let score=0;
+if(m.color===f.color) score++;
+if(m.size===f.size) score++;
+if(m.breed && f.breed && m.breed===f.breed) score++;
 
-        const connector = document.createElement("div");
-        connector.classList.add("flow-connector");
-        results.appendChild(connector);
-
-        const matches = adoptionAnimalProfiles
-            .map(animal => {
-                const common = animal.characteristics.filter(c =>
-                    owner.dreamCharacteristics.includes(c)
-                );
-                return { animal, score: common.length };
-            })
-            .filter(m => m.score > 0)
-            .sort((a, b) => b.score - a.score);
-
-        matches.forEach(match => {
-
-            const div = document.createElement("div");
-            div.classList.add("match-profile");
-
-            div.innerHTML = `
-                <h3>🐾 ${match.animal.name}</h3>
-                <p><strong>Type:</strong> ${match.animal.type}</p>
-                <p><strong>Match Score:</strong> ${match.score} ⭐</p>
-                <p><strong>Traits:</strong> ${match.animal.characteristics.join(", ")}</p>
-            `;
-
-            results.appendChild(div);
-        });
-    });
+if(score>0){
+let div=document.createElement("div");
+div.className="match-profile";
+div.innerHTML=`🔍 ${m.name} → Match Score: ${score}`;
+results.appendChild(div);
+}
+});
+});
 }
