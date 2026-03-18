@@ -115,7 +115,10 @@ button:hover {
 #home-page {
     display: block;
 }
-/* HIDE FORMS INITIALLY */
+/* HIDE EVERYTHING FIRST */
+#home-page,
+#adoption-page,
+#lost-page,
 #animal-form,
 #owner-form,
 #missing-form,
