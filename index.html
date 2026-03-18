@@ -1,18 +1,5 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>PetConnect</title>
-
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css3">
-</head>
-
-<body>
-
-<!-- HOME PAGE -->
-<div id="home-page" class="center-screen">
+<!-- HOME PAGE (VISIBLE FIRST) -->
+<div id="home-page">
     <h1>🐾 PetConnect</h1>
     <p class="subtitle">Find pets. Find homes. Reunite families.</p>
 
@@ -27,7 +14,8 @@
     </div>
 </div>
 
-<!-- ADOPTION PAGE -->
+
+<!-- ADOPTION PAGE (HIDDEN INITIALLY) -->
 <div id="adoption-page" class="hidden">
 
     <button class="back-btn" onclick="goHome()">← Back</button>
@@ -35,13 +23,19 @@
     <h2>Adoption</h2>
 
     <div class="home-options">
-        <div class="card-option" onclick="showAdoption('animal')">Add Animal</div>
-        <div class="card-option" onclick="showAdoption('owner')">Add Owner</div>
+        <div class="card-option" onclick="showAdoption('animal')">
+            Add Animal
+        </div>
+
+        <div class="card-option" onclick="showAdoption('owner')">
+            Add Owner
+        </div>
     </div>
 
+    <!-- ANIMAL FORM (HIDDEN) -->
     <section id="animal-form" class="hidden">
         <form onsubmit="submitAdoptionAnimalProfile(event)">
-            <input type="text" id="animal-name" placeholder="Name" required>
+            <input type="text" id="animal-name" placeholder="Animal Name" required>
 
             <select id="animal-type">
                 <option>Dog</option>
@@ -55,10 +49,11 @@
                 <label><input type="checkbox" value="Playful"> Playful</label>
             </div>
 
-            <button>Create Animal</button>
+            <button type="submit">Create Animal Profile</button>
         </form>
     </section>
 
+    <!-- OWNER FORM (HIDDEN) -->
     <section id="owner-form" class="hidden">
         <form onsubmit="submitOwnerProfile(event)">
             <input type="text" id="owner-name" placeholder="Owner Name" required>
@@ -70,7 +65,7 @@
                 <option>Playful</option>
             </select>
 
-            <button>Create Owner</button>
+            <button type="submit">Create Owner Profile</button>
         </form>
     </section>
 
@@ -79,7 +74,8 @@
 
 </div>
 
-<!-- LOST PAGE -->
+
+<!-- LOST & FOUND PAGE (HIDDEN INITIALLY) -->
 <div id="lost-page" class="hidden">
 
     <button class="back-btn" onclick="goHome()">← Back</button>
@@ -87,10 +83,16 @@
     <h2>Lost & Found</h2>
 
     <div class="home-options">
-        <div class="card-option" onclick="showLost('missing')">Missing Dog</div>
-        <div class="card-option" onclick="showLost('found')">Found Dog</div>
+        <div class="card-option" onclick="showLost('missing')">
+            Report Missing Dog
+        </div>
+
+        <div class="card-option" onclick="showLost('found')">
+            Report Found Dog
+        </div>
     </div>
 
+    <!-- MISSING DOG FORM (HIDDEN) -->
     <section id="missing-form" class="hidden">
         <form onsubmit="submitMissingDogProfile(event)">
             <input type="text" id="missing-dog-name" placeholder="Dog Name" required>
@@ -98,20 +100,23 @@
             <select id="missing-dog-color">
                 <option>Black</option>
                 <option>Brown</option>
+                <option>White</option>
             </select>
 
-            <button>Create Missing</button>
+            <button type="submit">Report Missing Dog</button>
         </form>
     </section>
 
+    <!-- FOUND DOG FORM (HIDDEN) -->
     <section id="found-form" class="hidden">
         <form onsubmit="submitFoundDogProfile(event)">
             <select id="found-dog-color">
                 <option>Black</option>
                 <option>Brown</option>
+                <option>White</option>
             </select>
 
-            <button>Create Found</button>
+            <button type="submit">Report Found Dog</button>
         </form>
     </section>
 
@@ -119,7 +124,3 @@
     <div id="lost-results"></div>
 
 </div>
-
-<script src="script.js"></script>
-</body>
-</html>
