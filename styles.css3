@@ -128,6 +128,14 @@ button:hover {
 }
 
 /* HIDDEN */
+#adoption-page,
+#lost-page,
+#animal-form,
+#owner-form,
+#missing-form,
+#found-form {
+    display: none;
+}
 .hidden {
     display: none;
 }
