@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pet Adoption Platform</title>
+    <link rel="stylesheet" href="styles.css3">
+</head>
+<body>
+
+    <!-- Form for Creating Adoption Animal Profile -->
+    <section id="create-adoption-animal-profile">
+        <h2>Create Adoption Animal Profile</h2>
+        <form id="adoption-animal-form" onsubmit="submitAdoptionAnimalProfile(event)">
+            <label for="animal-name">Name:</label>
+            <input type="text" id="animal-name" required>
+
+            <label for="animal-type">Type of Animal:</label>
+            <select id="animal-type" required>
+                <option value="Dog">Dog</option>
+                <option value="Cat">Cat</option>
+                <option value="Other">Other</option>
+            </select>
+
+            <label for="animal-characteristics">Select Characteristics (up to 5):</label>
+            <select id="animal-characteristics" multiple required>
+                <option value="Friendly">Friendly</option>
+                <option value="Energetic">Energetic</option>
+                <option value="Calm">Calm</option>
+                <option value="Playful">Playful</option>
+                <option value="Trained">Trained</option>
+                <option value="Good with Kids">Good with Kids</option>
+                <option value="Good with Other Pets">Good with Other Pets</option>
+            </select>
+
+            <button type="submit">Create Adoption Profile</button>
+        </form>
+    </section>
+
+    <!-- Form for Creating Potential Owner Profile -->
+    <section id="create-owner-profile">
+        <h2>Create Owner Profile</h2>
+        <form id="owner-profile-form" onsubmit="submitOwnerProfile(event)">
+            <label for="owner-name">Owner's Name:</label>
+            <input type="text" id="owner-name" required>
+
+            <label for="dream-characteristics">Desired Characteristics (up to 5):</label>
+            <select id="dream-characteristics" multiple required>
+                <option value="Friendly">Friendly</option>
+                <option value="Energetic">Energetic</option>
+                <option value="Calm">Calm</option>
+                <option value="Playful">Playful</option>
+                <option value="Trained">Trained</option>
+                <option value="Good with Kids">Good with Kids</option>
+                <option value="Good with Other Pets">Good with Other Pets</option>
+            </select>
+
+            <button type="submit">Create Owner Profile</button>
+        </form>
+    </section>
+
+    <!-- Match Profiles Button -->
+    <section id="match-section">
+        <h2>Match Profiles</h2>
+        <button onclick="matchProfiles()">Find Matches</button>
+    </section>
+
+    <!-- Match Results Page (to be displayed in flow-chart style) -->
+    <section id="match-results-page">
+        <h2>Match Results</h2>
+        <div id="match-results" class="flow-chart"></div>
+    </section>
+
+    <script src="script.js3"></script>
+</body>
+</html>
