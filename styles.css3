@@ -112,6 +112,9 @@ button:hover {
     background: #5a67d8;
 }
 
+#home-page {
+    display: block;
+}
 /* HIDE FORMS INITIALLY */
 #animal-form,
 #owner-form,
