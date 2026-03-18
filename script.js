@@ -8,8 +8,8 @@ function submitAdoptionAnimalProfile(event) {
     const name = document.getElementById("animal-name").value;
     const type = document.getElementById("animal-type").value;
     const characteristics = Array.from(
-        document.getElementById("animal-characteristics").selectedOptions
-    ).map(option => option.value);
+  document.querySelectorAll('#animal-characteristics input:checked')
+).map(cb => cb.value);
 
     if (characteristics.length > 5) {
         alert("Please select up to 5 characteristics.");
