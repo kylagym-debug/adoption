@@ -7,29 +7,34 @@ let missingDogs = [];
 let foundDogs = [];
 
 // ==========================
-// NAVIGATION
+// PAGE NAVIGATION (FIXED)
 // ==========================
 function showMain(page){
-    document.getElementById("home-page").classList.add("hidden");
-    document.getElementById(page + "-page").classList.remove("hidden");
+    document.getElementById("home-page").style.display = "none";
+    document.getElementById("adoption-page").style.display = "none";
+    document.getElementById("lost-page").style.display = "none";
+
+    document.getElementById(page + "-page").style.display = "block";
 }
 
 function goHome(){
-    document.getElementById("home-page").classList.remove("hidden");
-    document.getElementById("adoption-page").classList.add("hidden");
-    document.getElementById("lost-page").classList.add("hidden");
+    document.getElementById("home-page").style.display = "block";
+    document.getElementById("adoption-page").style.display = "none";
+    document.getElementById("lost-page").style.display = "none";
 }
 
 function showAdoption(type){
-    document.getElementById("animal-form").classList.add("hidden");
-    document.getElementById("owner-form").classList.add("hidden");
-    document.getElementById(type + "-form").classList.remove("hidden");
+    document.getElementById("animal-form").style.display = "none";
+    document.getElementById("owner-form").style.display = "none";
+
+    document.getElementById(type + "-form").style.display = "block";
 }
 
 function showLost(type){
-    document.getElementById("missing-form").classList.add("hidden");
-    document.getElementById("found-form").classList.add("hidden");
-    document.getElementById(type + "-form").classList.remove("hidden");
+    document.getElementById("missing-form").style.display = "none";
+    document.getElementById("found-form").style.display = "none";
+
+    document.getElementById(type + "-form").style.display = "block";
 }
 
 // ==========================
@@ -74,8 +79,8 @@ function matchProfiles(){
             if(matches.length > 0){
                 resultsDiv.innerHTML += `
                     <div class="match-profile">
-                        <strong>${owner.name}</strong> matches with <strong>${animal.name}</strong><br>
-                        Shared traits: ${matches.join(", ")}
+                        <strong>${owner.name}</strong> ↔ <strong>${animal.name}</strong><br>
+                        Shared: ${matches.join(", ")}
                     </div>
                     <div class="flow-connector"></div>
                 `;
@@ -120,7 +125,7 @@ function matchDogProfiles(){
                 resultsDiv.innerHTML += `
                     <div class="match-profile">
                         Possible match for <strong>${missing.name}</strong><br>
-                        Color match: ${missing.color}
+                        Color: ${missing.color}
                     </div>
                     <div class="flow-connector"></div>
                 `;
